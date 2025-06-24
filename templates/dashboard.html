@@ -1,0 +1,328 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Health Manager{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1><i data-feather="activity"></i> Health Dashboard</h1>
+                <div class="text-muted">
+                    Today: {{ current_date }}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Daily Summary Cards -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-3">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <i data-feather="zap" class="text-warning mb-2" style="width: 32px; height: 32px;"></i>
+                    <h5 class="card-title">Calories</h5>
+                    <h2 class="text-warning">{{ daily_calories }}</h2>
+                    <p class="text-muted mb-0">of {{ calorie_goal }} goal</p>
+                    <div class="progress mt-2" style="height: 8px;">
+                        <div class="progress-bar bg-warning" style="width: {{ (daily_calories / calorie_goal * 100) | round }}%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <i data-feather="trending-up" class="text-success mb-2" style="width: 32px; height: 32px;"></i>
+                    <h5 class="card-title">Protein</h5>
+                    <h2 class="text-success">{{ daily_protein | round(1) }}g</h2>
+                    <p class="text-muted mb-0">Daily intake</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <i data-feather="pie-chart" class="text-info mb-2" style="width: 32px; height: 32px;"></i>
+                    <h5 class="card-title">Carbs</h5>
+                    <h2 class="text-info">{{ daily_carbs | round(1) }}g</h2>
+                    <p class="text-muted mb-0">Daily intake</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <i data-feather="droplet" class="text-danger mb-2" style="width: 32px; height: 32px;"></i>
+                    <h5 class="card-title">Fat</h5>
+                    <h2 class="text-danger">{{ daily_fat | round(1) }}g</h2>
+                    <p class="text-muted mb-0">Daily intake</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- Weekly Chart -->
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><i data-feather="bar-chart-2"></i> Weekly Calorie Intake</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="weeklyChart" height="100"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Actions -->
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><i data-feather="plus-circle"></i> Quick Actions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{{ url_for('main.upload') }}" class="btn btn-primary">
+                            <i data-feather="camera"></i>
+                            Scan Food
+                        </a>
+                        <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#logFoodModal">
+                            <i data-feather="edit"></i>
+                            Log Food Manually
+                        </button>
+                        <a href="{{ url_for('main.recipes') }}" class="btn btn-outline-secondary">
+                            <i data-feather="search"></i>
+                            Search Recipes
+                        </a>
+                        <a href="{{ url_for('main.profile') }}" class="btn btn-outline-secondary">
+                            <i data-feather="settings"></i>
+                            Update Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Today's Food Log -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i data-feather="list"></i> Today's Food Log</h5>
+                </div>
+                <div class="card-body">
+                    {% if today_logs %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Food</th>
+                                        <th>Meal</th>
+                                        <th>Servings</th>
+                                        <th>Calories</th>
+                                        <th>Protein</th>
+                                        <th>Carbs</th>
+                                        <th>Fat</th>
+                                        <th>Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for log in today_logs %}
+                                    <tr>
+                                        <td>{{ log.food_name }}</td>
+                                        <td><span class="badge bg-secondary">{{ log.meal_type or 'snack' }}</span></td>
+                                        <td>{{ log.servings }}</td>
+                                        <td>{{ (log.calories * log.servings) | round }}</td>
+                                        <td>{{ (log.protein * log.servings) | round(1) }}g</td>
+                                        <td>{{ (log.carbs * log.servings) | round(1) }}g</td>
+                                        <td>{{ (log.fat * log.servings) | round(1) }}g</td>
+                                        <td>{{ log.created_at.strftime('%H:%M') }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-4">
+                            <i data-feather="calendar" style="width: 48px; height: 48px;" class="text-muted mb-3"></i>
+                            <p class="text-muted">No food logged today. Start by scanning a food item or adding manually!</p>
+                            <a href="{{ url_for('main.upload') }}" class="btn btn-primary">
+                                <i data-feather="camera"></i>
+                                Scan Your First Meal
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Log Food Modal -->
+<div class="modal fade" id="logFoodModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i data-feather="edit"></i> Log Food Manually</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="logFoodForm">
+                    <div class="mb-3">
+                        <label for="foodName" class="form-label">Food Name</label>
+                        <input type="text" class="form-control" id="foodName" required>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="servings" class="form-label">Servings</label>
+                                <input type="number" class="form-control" id="servings" step="0.1" value="1" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="mealType" class="form-label">Meal Type</label>
+                                <select class="form-select" id="mealType">
+                                    <option value="breakfast">Breakfast</option>
+                                    <option value="lunch">Lunch</option>
+                                    <option value="dinner">Dinner</option>
+                                    <option value="snack">Snack</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="calories" class="form-label">Calories</label>
+                                <input type="number" class="form-control" id="calories" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="protein" class="form-label">Protein (g)</label>
+                                <input type="number" class="form-control" id="protein" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="carbs" class="form-label">Carbs (g)</label>
+                                <input type="number" class="form-control" id="carbs" step="0.1">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="fat" class="form-label">Fat (g)</label>
+                                <input type="number" class="form-control" id="fat" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="logFood()">
+                    <i data-feather="save"></i>
+                    Log Food
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+<script>
+    // Initialize weekly chart
+    const weekData = {{ week_data | safe }};
+    const calorieGoal = {{ calorie_goal }};
+    
+    const ctx = document.getElementById('weeklyChart').getContext('2d');
+    const weeklyChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: weekData.map(d => new Date(d.date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })),
+            datasets: [{
+                label: 'Calories',
+                data: weekData.map(d => d.calories),
+                borderColor: 'rgb(255, 193, 7)',
+                backgroundColor: 'rgba(255, 193, 7, 0.1)',
+                fill: true,
+                tension: 0.4
+            }, {
+                label: 'Goal',
+                data: Array(weekData.length).fill(calorieGoal),
+                borderColor: 'rgb(220, 53, 69)',
+                borderDash: [5, 5],
+                pointRadius: 0,
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Calories'
+                    }
+                }
+            }
+        }
+    });
+
+    // Log food function
+    function logFood() {
+        const data = {
+            food_name: document.getElementById('foodName').value,
+            servings: parseFloat(document.getElementById('servings').value),
+            meal_type: document.getElementById('mealType').value,
+            calories: parseInt(document.getElementById('calories').value),
+            protein: parseFloat(document.getElementById('protein').value) || 0,
+            carbs: parseFloat(document.getElementById('carbs').value) || 0,
+            fat: parseFloat(document.getElementById('fat').value) || 0
+        };
+
+        fetch('/api/log_food', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                location.reload(); // Refresh to show new data
+            } else {
+                alert('Error logging food: ' + result.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error logging food');
+        });
+
+        // Close modal
+        bootstrap.Modal.getInstance(document.getElementById('logFoodModal')).hide();
+    }
+</script>
+{% endblock %}

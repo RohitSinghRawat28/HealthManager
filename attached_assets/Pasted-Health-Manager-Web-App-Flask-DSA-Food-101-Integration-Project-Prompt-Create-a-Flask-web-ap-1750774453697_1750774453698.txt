@@ -1,0 +1,86 @@
+Health Manager Web App (Flask + DSA + Food-101 Integration)
+🧠 Project Prompt:
+Create a Flask web app that combines recipe search, health management, calorie tracking, and AI-based food classification using image data from the Food-101 dataset hosted on Kaggle.
+
+🔗 Dataset Source:
+Use the following .h5 dataset from Kaggle:
+📂 Food-101 Dataset - food_c101_n10099_r32x32x1.h5
+
+This HDF5 file contains:
+
+images: 10099 grayscale food images resized to 32x32x1
+
+labels: Integer labels corresponding to 101 food categories
+
+🔶 Extended Core Features
+✅ 1. Recipe Recognition from Image (Optional ML Module)
+Use TensorFlow/Keras or PyTorch to load HDF5 image data
+
+Build a lightweight CNN to classify image into one of 101 categories
+
+Match prediction to corresponding recipe
+
+Show name, ingredients, instructions from a supplementary recipe DB (manual CSV/JSON link to labels)
+
+✅ 2. Dataset Loader
+Use h5py to load .h5 files:
+
+python
+Copy
+Edit
+import h5py
+with h5py.File('food_c101_n10099_r32x32x1.h5', 'r') as f:
+    images = f['images'][:]       # shape: (10099, 32, 32, 1)
+    labels = f['category'][:]     # shape: (10099,)
+Map labels to readable category names using a separate JSON/CSV mapping
+
+✅ 3. Image-Based Search
+Users upload a food image → system classifies → suggests recipes
+
+Efficient lookup using hash mapping label → recipe list
+
+(Optional) Recommend similar recipes using cosine similarity in embedding space
+
+🧩 Integrate with Original Features
+The system should now support:
+
+Feature	Technology
+🍳 Recipe search (name, ingredient, tag)	Trie, HashMap
+🧠 Intelligent matching (based on similarity, image recognition)	Set ops, cosine sim
+📦 Recipe DB (text + image index)	SQLite + image labels
+🩺 Health & calorie manager	Harris-Benedict BMR formula
+📧 SMTP alerts	Flask-Mail or smtplib
+🧵 UI	Bootstrap / Tailwind CSS, Chart.js
+
+📦 Backend Stack
+Flask – Web framework
+
+SQLite/MySQL – Recipe DB
+
+h5py – Load HDF5 .h5 data
+
+TensorFlow/PyTorch (optional) – Image classification
+
+Flask-Mail / smtplib – Email alerts
+
+Jinja2 + HTML/CSS/JS – UI templates
+
+Chart.js – Visualization of nutrient/calorie graphs
+
+✅ Bonus Smart Features
+Upload food image → suggest similar recipe
+
+Auto-fill calories from image class
+
+Visual recipe explorer: gallery of all Food-101 categories
+
+Daily goal progress bar, mail summary, and health tips
+
+💻 Example Workflow
+User logs in and sets calorie target.
+
+Searches for “pasta” using name or uploads pasta image.
+
+System recognizes image (label pasta_carbonara) and shows 3 similar recipes.
+
+User logs consumption, app tracks calories, and sends evening summary via email.

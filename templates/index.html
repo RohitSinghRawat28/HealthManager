@@ -1,0 +1,255 @@
+{% extends "base.html" %}
+
+{% block title %}Health Manager - AI-Powered Nutrition Tracking{% endblock %}
+
+{% block content %}
+<div class="hero-section bg-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold">Smart Health Management</h1>
+                <p class="lead">Track your nutrition with AI-powered food recognition, discover healthy recipes, and achieve your health goals with personalized insights.</p>
+                <div class="mt-4">
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-light btn-lg me-3">Get Started</a>
+                    <a href="{{ url_for('main.recipes') }}" class="btn btn-outline-light btn-lg">Explore Recipes</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="hero-icon-container">
+                    <i data-feather="heart" style="width: 200px; height: 200px; stroke: rgba(255,255,255,0.8);"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-12 text-center mb-5">
+            <h2 class="display-5">Powerful Features</h2>
+            <p class="lead">Everything you need to manage your health and nutrition</p>
+        </div>
+    </div>
+    
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3">
+                        <i data-feather="camera" style="width: 48px; height: 48px; color: var(--bs-primary);"></i>
+                    </div>
+                    <h5 class="card-title">AI Food Recognition</h5>
+                    <p class="card-text">Upload photos of your meals and let our AI identify the food and provide nutritional information instantly.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3">
+                        <i data-feather="book-open" style="width: 48px; height: 48px; color: var(--bs-success);"></i>
+                    </div>
+                    <h5 class="card-title">Recipe Discovery</h5>
+                    <p class="card-text">Search through thousands of healthy recipes with advanced filtering by ingredients, nutrition, and dietary preferences.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3">
+                        <i data-feather="activity" style="width: 48px; height: 48px; color: var(--bs-warning);"></i>
+                    </div>
+                    <h5 class="card-title">Health Tracking</h5>
+                    <p class="card-text">Monitor your daily nutrition intake, track your progress toward health goals, and get personalized recommendations.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3">
+                        <i data-feather="bar-chart-2" style="width: 48px; height: 48px; color: var(--bs-info);"></i>
+                    </div>
+                    <h5 class="card-title">Analytics Dashboard</h5>
+                    <p class="card-text">Visualize your nutrition data with interactive charts and get insights into your eating patterns and health trends.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3">
+                        <i data-feather="mail" style="width: 48px; height: 48px; color: var(--bs-danger);"></i>
+                    </div>
+                    <h5 class="card-title">Smart Notifications</h5>
+                    <p class="card-text">Receive daily and weekly nutrition summaries, goal achievements, and personalized health tips via email.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3">
+                        <i data-feather="target" style="width: 48px; height: 48px; color: var(--bs-secondary);"></i>
+                    </div>
+                    <h5 class="card-title">Goal Setting</h5>
+                    <p class="card-text">Set personalized health goals based on your profile and get recommendations tailored to your needs and lifestyle.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-light py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="display-6">How It Works</h2>
+                <div class="mt-4">
+                    <div class="d-flex mb-3">
+                        <div class="flex-shrink-0">
+                            <span class="badge bg-primary rounded-pill">1</span>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5>Create Your Profile</h5>
+                            <p>Set up your health profile with your goals, preferences, and dietary requirements.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-3">
+                        <div class="flex-shrink-0">
+                            <span class="badge bg-primary rounded-pill">2</span>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5>Track Your Meals</h5>
+                            <p>Upload photos of your food or search our recipe database to log your meals.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-3">
+                        <div class="flex-shrink-0">
+                            <span class="badge bg-primary rounded-pill">3</span>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5>Monitor Progress</h5>
+                            <p>View your nutrition dashboard and receive personalized insights and recommendations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex">
+                        <div class="flex-shrink-0">
+                            <span class="badge bg-primary rounded-pill">4</span>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5>Achieve Your Goals</h5>
+                            <p>Stay motivated with progress tracking, achievements, and health tips delivered to your inbox.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="feature-icon-container">
+                    <i data-feather="smartphone" style="width: 150px; height: 150px; color: var(--bs-primary);"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h2 class="display-6 mb-4">Ready to Start Your Health Journey?</h2>
+            <p class="lead mb-4">Join thousands of users who are already improving their health with our AI-powered platform.</p>
+            <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">Sign Up Now</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Animate icons on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+            }
+        });
+    }, observerOptions);
+
+    // Observe all cards
+    document.querySelectorAll('.card').forEach(card => {
+        observer.observe(card);
+    });
+</script>
+
+<style>
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .card {
+        opacity: 0;
+        transition: transform 0.2s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .hero-section {
+        background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-info) 100%);
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .hero-icon-container {
+        animation: float 3s ease-in-out infinite;
+    }
+    
+    .feature-icon-container {
+        animation: pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+    
+    .card {
+        border: none;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+    }
+</style>
+{% endblock %}

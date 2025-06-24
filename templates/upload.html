@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block title %}Food Scanner - Health Manager{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1><i data-feather="camera"></i> AI Food Scanner</h1>
+            <p class="lead">Upload a photo of your food and let our AI identify it and provide nutritional information</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i data-feather="upload"></i> Upload Food Image</h5>
+                </div>
+                <div class="card-body">
+                    <div id="upload-area" class="border-dashed text-center p-5 mb-4">
+                        <i data-feather="image" style="width: 64px; height: 64px;" class="text-muted mb-3"></i>
+                        <h4>Drag & Drop your image here</h4>
+                        <p class="text-muted">or click to browse files</p>
+                        <input type="file" id="image-input" accept="image/*" style="display: none;">
+                        <button type="button" class="btn btn-primary" onclick="document.getElementById('image-input').click()">
+                            <i data-feather="folder"></i>
+                            Choose File
+                        </button>
+                    </div>
+                    
+                    <div id="image-preview" style="display: none;">
+                        <h6>Preview:</h6>
+                        <img id="preview-img" class="img-fluid mb-3" style="max-height: 300px;">
+                        <div class="d-grid gap-2 d-md-flex">
+                            <button type="button" class="btn btn-success" id="analyze-btn">
+                                <i data-feather="zap"></i>
+                                Analyze Food
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="clearImage()">
+                                <i data-feather="x"></i>
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="loading" style="display: none;" class="text-center py-4">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Analyzing...</span>
+                        </div>
+                        <p class="mt-2">Analyzing your food image...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i data-feather="info"></i> How it works</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex mb-3">
+                        <div class="flex-shrink-0">
+                            <span class="badge bg-primary rounded-pill">1</span>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6>Upload Image</h6>
+                            <p class="mb-0 small text-muted">Take a photo or upload an image of your food</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-3">
+                        <div class="flex-shrink-0">
+                            <span class="badge bg-primary rounded-pill">2</span>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6>AI Analysis</h6>
+                            <p class="mb-0 small text-muted">Our AI identifies the food using the Food-101 dataset</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-3">
+                        <div class="flex-shrink-0">
+                            <span class="badge bg-primary rounded-pill">3</span>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6>Get Recipes</h6>
+                            <p class="mb-0 small text-muted">Discover similar recipes and nutritional information</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex">
+                        <div class="flex-shrink-0">
+                            <span class="badge bg-primary rounded-pill">4</span>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6>Log & Track</h6>
+                            <p class="mb-0 small text-muted">Easily log the food to your daily nutrition tracker</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><i data-feather="help-circle"></i> Tips</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2">
+                            <i data-feather="check" class="text-success me-2" style="width: 16px; height: 16px;"></i>
+                            Take clear, well-lit photos
+                        </li>
+                        <li class="mb-2">
+                            <i data-feather="check" class="text-success me-2" style="width: 16px; height: 16px;"></i>
+                            Center the food in the frame
+                        </li>
+                        <li class="mb-2">
+                            <i data-feather="check" class="text-success me-2" style="width: 16px; height: 16px;"></i>
+                            Avoid cluttered backgrounds
+                        </li>
+                        <li class="mb-0">
+                            <i data-feather="check" class="text-success me-2" style="width: 16px; height: 16px;"></i>
+                            Include the whole dish if possible
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Results Section -->
+    <div id="results-section" style="display: none;">
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i data-feather="target"></i> Analysis Results</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="prediction-results">
+                            <!-- Results will be populated here -->
+                        </div>
+                        
+                        <div id="recipe-suggestions" class="mt-4">
+                            <h6><i data-feather="book-open"></i> Suggested Recipes</h6>
+                            <div id="recipe-list" class="row">
+                                <!-- Recipe suggestions will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+<script>
+    // Initialize the upload functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeUpload();
+    });
+</script>
+
+<style>
+    .border-dashed {
+        border: 2px dashed var(--bs-border-color);
+        border-radius: 0.5rem;
+        transition: border-color 0.2s ease;
+    }
+    
+    .border-dashed:hover {
+        border-color: var(--bs-primary);
+        background-color: var(--bs-light);
+    }
+    
+    .border-dashed.dragover {
+        border-color: var(--bs-primary);
+        background-color: var(--bs-primary-bg-subtle);
+    }
+    
+    #upload-area {
+        cursor: pointer;
+    }
+    
+    .recipe-card {
+        transition: transform 0.2s ease;
+    }
+    
+    .recipe-card:hover {
+        transform: translateY(-2px);
+    }
+</style>
+{% endblock %}

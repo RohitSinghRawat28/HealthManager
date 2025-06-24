@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Chicken Alfredo Pasta",
+    "description": "Creamy pasta with grilled chicken and parmesan cheese",
+    "ingredients": [{"name": "fettuccine", "amount": "1", "unit": "lb"}, {"name": "chicken breast", "amount": "2", "unit": "lbs"}, {"name": "heavy cream", "amount": "2", "unit": "cups"}, {"name": "parmesan cheese", "amount": "1", "unit": "cup"}, {"name": "garlic", "amount": "4", "unit": "cloves"}, {"name": "butter", "amount": "4", "unit": "tbsp"}],
+    "instructions": "1. Cook pasta according to package directions.\n2. Season and grill chicken, then slice.\n3. Make alfredo sauce with cream, butter, garlic, and cheese.\n4. Combine pasta, chicken, and sauce.",
+    "prep_time": 15, "cook_time": 25, "servings": 6, "calories_per_serving": 680, "protein": 45.0, "carbs": 48.0, "fat": 32.0, "fiber": 3.0, "sugar": 4.0, "sodium": 890, "category": "Main Course", "tags": ["pasta", "chicken", "creamy", "italian"], "food_category_id": 91
+  },
+  {
+    "name": "Fish and Chips",
+    "description": "Beer-battered fish with crispy fries",
+    "ingredients": [{"name": "white fish fillets", "amount": "2", "unit": "lbs"}, {"name": "potatoes", "amount": "4", "unit": "large"}, {"name": "flour", "amount": "2", "unit": "cups"}, {"name": "beer", "amount": "1", "unit": "cup"}, {"name": "vegetable oil", "amount": "6", "unit": "cups"}],
+    "instructions": "1. Cut potatoes into fries and fry until golden.\n2. Make beer batter with flour and beer.\n3. Dip fish in batter and fry until crispy.\n4. Serve with malt vinegar and mushy peas.",
+    "prep_time": 20, "cook_time": 20, "servings": 4, "calories_per_serving": 720, "protein": 38.0, "carbs": 65.0, "fat": 35.0, "fiber": 6.0, "sugar": 3.0, "sodium": 650, "category": "Main Course", "tags": ["fish", "fried", "british", "comfort"], "food_category_id": 38
+  },
+  {
+    "name": "Beef Burrito Bowl",
+    "description": "Mexican-inspired bowl with seasoned beef and toppings",
+    "ingredients": [{"name": "ground beef", "amount": "1", "unit": "lb"}, {"name": "rice", "amount": "2", "unit": "cups"}, {"name": "black beans", "amount": "1", "unit": "can"}, {"name": "corn", "amount": "1", "unit": "cup"}, {"name": "avocado", "amount": "2", "unit": "medium"}, {"name": "salsa", "amount": "1", "unit": "cup"}],
+    "instructions": "1. Cook rice according to package directions.\n2. Brown beef with taco seasoning.\n3. Warm black beans and corn.\n4. Assemble bowls with rice, beef, beans, and toppings.",
+    "prep_time": 15, "cook_time": 20, "servings": 4, "calories_per_serving": 580, "protein": 32.0, "carbs": 55.0, "fat": 24.0, "fiber": 12.0, "sugar": 8.0, "sodium": 920, "category": "Main Course", "tags": ["mexican", "bowl", "beef", "healthy"], "food_category_id": 9
+  },
+  {
+    "name": "Vegetable Pad Thai",
+    "description": "Thai stir-fried noodles with vegetables and peanut sauce",
+    "ingredients": [{"name": "rice noodles", "amount": "8", "unit": "oz"}, {"name": "mixed vegetables", "amount": "3", "unit": "cups"}, {"name": "peanut butter", "amount": "3", "unit": "tbsp"}, {"name": "soy sauce", "amount": "3", "unit": "tbsp"}, {"name": "lime juice", "amount": "2", "unit": "tbsp"}, {"name": "bean sprouts", "amount": "1", "unit": "cup"}],
+    "instructions": "1. Soak rice noodles in warm water until soft.\n2. Stir-fry vegetables until crisp-tender.\n3. Add noodles and sauce ingredients.\n4. Toss everything together and garnish with peanuts.",
+    "prep_time": 15, "cook_time": 12, "servings": 4, "calories_per_serving": 380, "protein": 12.0, "carbs": 58.0, "fat": 14.0, "fiber": 6.0, "sugar": 12.0, "sodium": 780, "category": "Main Course", "tags": ["thai", "vegetarian", "noodles", "peanut"], "food_category_id": 70
+  },
+  {
+    "name": "Chocolate Lava Cake",
+    "description": "Warm chocolate cake with molten center",
+    "ingredients": [{"name": "dark chocolate", "amount": "4", "unit": "oz"}, {"name": "butter", "amount": "4", "unit": "tbsp"}, {"name": "eggs", "amount": "2", "unit": "large"}, {"name": "sugar", "amount": "1/4", "unit": "cup"}, {"name": "flour", "amount": "2", "unit": "tbsp"}],
+    "instructions": "1. Melt chocolate and butter together.\n2. Whisk eggs and sugar until thick.\n3. Fold in chocolate mixture and flour.\n4. Bake in ramekins at 425°F for 12 minutes.",
+    "prep_time": 15, "cook_time": 12, "servings": 2, "calories_per_serving": 420, "protein": 8.0, "carbs": 35.0, "fat": 28.0, "fiber": 4.0, "sugar": 28.0, "sodium": 85, "category": "Dessert", "tags": ["chocolate", "dessert", "molten", "rich"], "food_category_id": 21
+  },
+  {
+    "name": "Greek Chicken Gyros",
+    "description": "Marinated chicken in pita bread with tzatziki",
+    "ingredients": [{"name": "chicken thighs", "amount": "2", "unit": "lbs"}, {"name": "pita bread", "amount": "6", "unit": "pieces"}, {"name": "Greek yogurt", "amount": "1", "unit": "cup"}, {"name": "cucumber", "amount": "1", "unit": "large"}, {"name": "lemon juice", "amount": "3", "unit": "tbsp"}, {"name": "oregano", "amount": "2", "unit": "tsp"}],
+    "instructions": "1. Marinate chicken in lemon juice and oregano.\n2. Grill chicken until cooked through.\n3. Make tzatziki with yogurt and cucumber.\n4. Serve chicken in pita with tzatziki and vegetables.",
+    "prep_time": 20, "cook_time": 15, "servings": 6, "calories_per_serving": 420, "protein": 35.0, "carbs": 32.0, "fat": 18.0, "fiber": 3.0, "sugar": 6.0, "sodium": 650, "category": "Main Course", "tags": ["greek", "chicken", "gyros", "mediterranean"], "food_category_id": 19
+  },
+  {
+    "name": "Shrimp Scampi",
+    "description": "Garlic butter shrimp over linguine pasta",
+    "ingredients": [{"name": "shrimp", "amount": "1.5", "unit": "lbs"}, {"name": "linguine", "amount": "1", "unit": "lb"}, {"name": "garlic", "amount": "6", "unit": "cloves"}, {"name": "white wine", "amount": "1/2", "unit": "cup"}, {"name": "butter", "amount": "6", "unit": "tbsp"}, {"name": "parsley", "amount": "1/4", "unit": "cup"}],
+    "instructions": "1. Cook linguine according to package directions.\n2. Sauté garlic in butter until fragrant.\n3. Add shrimp and cook until pink.\n4. Add wine and parsley, toss with pasta.",
+    "prep_time": 15, "cook_time": 15, "servings": 4, "calories_per_serving": 520, "protein": 38.0, "carbs": 48.0, "fat": 18.0, "fiber": 2.0, "sugar": 3.0, "sodium": 720, "category": "Main Course", "tags": ["shrimp", "pasta", "garlic", "seafood"], "food_category_id": 89
+  },
+  {
+    "name": "Vegetarian Chili",
+    "description": "Hearty three-bean chili with vegetables",
+    "ingredients": [{"name": "kidney beans", "amount": "1", "unit": "can"}, {"name": "black beans", "amount": "1", "unit": "can"}, {"name": "pinto beans", "amount": "1", "unit": "can"}, {"name": "diced tomatoes", "amount": "2", "unit": "cans"}, {"name": "bell peppers", "amount": "2", "unit": "medium"}, {"name": "chili powder", "amount": "2", "unit": "tbsp"}],
+    "instructions": "1. Sauté onions and peppers until soft.\n2. Add beans, tomatoes, and spices.\n3. Simmer 30 minutes, stirring occasionally.\n4. Serve with cornbread and sour cream.",
+    "prep_time": 15, "cook_time": 45, "servings": 6, "calories_per_serving": 280, "protein": 15.0, "carbs": 52.0, "fat": 2.0, "fiber": 18.0, "sugar": 12.0, "sodium": 680, "category": "Main Course", "tags": ["vegetarian", "chili", "beans", "healthy"], "food_category_id": 11
+  },
+  {
+    "name": "Beef Stroganoff",
+    "description": "Tender beef in creamy mushroom sauce over noodles",
+    "ingredients": [{"name": "beef sirloin", "amount": "1.5", "unit": "lbs"}, {"name": "egg noodles", "amount": "12", "unit": "oz"}, {"name": "mushrooms", "amount": "8", "unit": "oz"}, {"name": "sour cream", "amount": "1", "unit": "cup"}, {"name": "beef broth", "amount": "1", "unit": "cup"}, {"name": "onion", "amount": "1", "unit": "large"}],
+    "instructions": "1. Cook egg noodles according to package directions.\n2. Brown beef strips in batches.\n3. Sauté mushrooms and onions.\n4. Add broth and sour cream, simmer with beef.",
+    "prep_time": 20, "cook_time": 25, "servings": 6, "calories_per_serving": 480, "protein": 32.0, "carbs": 38.0, "fat": 22.0, "fiber": 3.0, "sugar": 6.0, "sodium": 780, "category": "Main Course", "tags": ["beef", "stroganoff", "creamy", "noodles"], "food_category_id": 93
+  },
+  {
+    "name": "Chicken Caesar Wrap",
+    "description": "Grilled chicken and caesar salad in a tortilla wrap",
+    "ingredients": [{"name": "chicken breast", "amount": "1", "unit": "lb"}, {"name": "flour tortillas", "amount": "4", "unit": "large"}, {"name": "romaine lettuce", "amount": "1", "unit": "head"}, {"name": "caesar dressing", "amount": "1/2", "unit": "cup"}, {"name": "parmesan cheese", "amount": "1/2", "unit": "cup"}],
+    "instructions": "1. Grill chicken and slice into strips.\n2. Chop romaine lettuce.\n3. Toss lettuce with dressing and cheese.\n4. Fill tortillas with chicken and salad, wrap tightly.",
+    "prep_time": 15, "cook_time": 12, "servings": 4, "calories_per_serving": 380, "protein": 28.0, "carbs": 32.0, "fat": 16.0, "fiber": 4.0, "sugar": 3.0, "sodium": 920, "category": "Lunch", "tags": ["wrap", "chicken", "caesar", "portable"], "food_category_id": 25
+  }
+]
