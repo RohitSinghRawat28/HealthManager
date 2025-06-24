@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 """
 Debug script to check Railway database status and manually initialize if needed
 """
