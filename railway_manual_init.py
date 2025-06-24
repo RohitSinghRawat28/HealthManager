@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 """
 Manual database initialization for Railway
 Run this if automatic initialization failed
