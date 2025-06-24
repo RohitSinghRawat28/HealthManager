@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 """
 Railway.com deployment setup script
 This script initializes the database and loads sample data for Railway deployment
