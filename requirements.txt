@@ -22,5 +22,5 @@ h5py==3.10.0
 email-validator==2.1.0
 
 # Optional ML Dependencies (uncomment if using TensorFlow)
-tensorflow==2.15.0
-keras==2.15.0
+# tensorflow==2.15.0
+# keras==2.15.0
